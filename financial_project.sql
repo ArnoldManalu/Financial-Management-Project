@@ -1,0 +1,25 @@
+CREATE TABLE users(
+	user_id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	balance NUMERIC(12, 2) CHECK (balance >= 0)
+);
+
+CREATE TABLE income(
+	income_id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+	amount NUMERIC(12, 2) NOT NULL,
+	sumber VARCHAR(255) NOT NULL,
+	tanggal_transaksi TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE expense(
+	expense_id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+	amount NUMERIC(12, 2) NOT NULL,
+	sumber VARCHAR(255) NOT NULL,
+	tanggal_transaksi TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	description VARCHAR(255)NOT NULL
+);

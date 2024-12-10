@@ -312,6 +312,7 @@ COPY currency (currency_code, exchange_rate)
 FROM 'D:/D-III Teknologi Informasi/Semester 3/Sistem Basis Data/Proyek/Artefak/12_HasilCrawlingSistemManajemenKeuanganPersonal.csv'
 DELIMITER ';';
 
+
 -- Stored Procedure untuk Melihat Saldo Pengguna
 CREATE OR REPLACE PROCEDURE view_user_balance(
     p_user_id INTEGER

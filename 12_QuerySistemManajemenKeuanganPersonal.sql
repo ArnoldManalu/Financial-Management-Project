@@ -387,7 +387,7 @@ SELECT * FROM expense;
 SELECT * FROM currency;
 SELECT * FROM users;
 
-
+-- Function konversi saldo ke masing-masing kurs
 CREATE OR REPLACE FUNCTION show_exchange_rate(user_num INT) 
 RETURNS VOID AS $$
 DECLARE
@@ -429,6 +429,14 @@ BEGIN
 END;
 $$;
 
+
+-- Insert into income
+INSERT INTO income (user_id, amount, source, description) VALUES
+(4, 125000, 6, 'Penjualan Saham')
+
+-- Insert into expense
+INSERT INTO expense (user_id, amount, source, description) VALUES
+(4, 125000, 6, 'Pembelian Saham Saham')
 
 -- Backup data dan jalankan pada terminal
 pg_dump -U postgres -d financial_project -f "12_BackupSistemManajemenKeuanganPersonal.sql"
